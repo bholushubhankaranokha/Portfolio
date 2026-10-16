@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
+    AlertCircle,
     ArrowDown,
     ArrowRight,
     ArrowUpRight,
     BriefcaseBusiness,
+    CheckCircle,
     Download,
     Eye,
     ExternalLink,
@@ -15,6 +17,7 @@ import {
     GraduationCap,
     Layers,
     Linkedin,
+    Loader2,
     Mail,
     MapPin,
     Menu,
@@ -23,7 +26,8 @@ import {
     Sun,
     X
 } from 'lucide-react';
-import { profile, projects, skillGroups, certificates } from './data/portfolio';
+import emailjs from '@emailjs/browser';
+import { profile, projects, skillGroups, certificates, emailjsConfig } from './data/portfolio';
 import { useTheme } from './hooks/useTheme';
 import { TechIcon } from './components/TechIcons';
 import PortfolioAssistant from './components/PortfolioAssistant';
@@ -762,96 +766,217 @@ function Certificates({ theme }) {
 
 function Contact({ theme }) {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
     const [feedback, setFeedback] = useState('');
-    const update = e => setForm({ ...form, [e.target.name]: e.target.value });
-    const submit = e => {
+
+    const update = e => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+        if (feedback) {
+            setFeedback('');
+            setStatus('idle');
+        }
+    };
+
+    const submit = async e => {
         e.preventDefault();
-        if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-            setFeedback('Please complete every field.');
+        const name = form.name.trim();
+        const email = form.email.trim();
+        const message = form.message.trim();
+
+        if (!name || !email || !message) {
+            setStatus('error');
+            setFeedback('Please complete every field before sending.');
             return;
         }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setStatus('error');
             setFeedback('Please enter a valid email address.');
             return;
         }
-        const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`);
-        const body = encodeURIComponent(`Name: ${form.name}\nReply email: ${form.email}\n\n${form.message}`);
-        setFeedback('Your email app will open with this message prepared.');
-        window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+
+        const serviceId = emailjsConfig.serviceId || import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = emailjsConfig.templateId || import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = emailjsConfig.publicKey || import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        if (!serviceId || !templateId || !publicKey) {
+            setStatus('error');
+            setFeedback('EmailJS keys are not yet configured. Please set them in your .env file to send directly.');
+            return;
+        }
+
+        setStatus('sending');
+        setFeedback('');
+
+        try {
+            const now = new Date();
+            const formattedTime = now.toLocaleString('en-US', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+            });
+            const currentYear = now.getFullYear().toString();
+
+            await emailjs.send(
+                serviceId,
+                templateId,
+                {
+                    name: name,
+                    email: email,
+                    message: message,
+                    time: formattedTime,
+                    year: currentYear,
+                    from_name: name,
+                    from_email: email,
+                    reply_to: email,
+                    user_email: email,
+                    to_name: profile.name,
+                },
+                publicKey
+            );
+            setStatus('success');
+            setFeedback("Thank you! Your message has been sent successfully. I'll get back to you soon.");
+            setForm({ name: '', email: '', message: '' });
+        } catch (err) {
+            console.error('EmailJS send error:', err);
+            setStatus('error');
+            const errorMsg = err?.text || err?.message || 'Failed to send message via EmailJS.';
+            setFeedback(`${errorMsg} Please check your EmailJS dashboard or contact me directly.`);
+        }
     };
 
     return (
-        <section id="contact" className={`section contact-section ${theme === 'dark' ? 'contact-dark' : 'contact-light'}`}>
-            <div className="contact-scenic-bg" aria-hidden="true" />
-            <div className="contact-scenic-shade" aria-hidden="true" />
+        <section id="contact" className={`contact-section ${theme === 'dark' ? 'contact-dark' : 'contact-light'}`}>
+            {/* Background layers for seamless Morning / Evening crossfade (flipped) */}
+            <div
+                className="contact-bg contact-bg-morning"
+                style={{ opacity: theme === 'light' ? 1 : 0 }}
+                aria-hidden="true"
+            />
+            <div
+                className="contact-bg contact-bg-evening"
+                style={{ opacity: theme === 'dark' ? 1 : 0 }}
+                aria-hidden="true"
+            />
 
-            <div className="section-wrap contact-layout-wrap">
-                <div className="contact-info-col">
-                    <span className="section-eyebrow-accent">GET IN TOUCH</span>
-                    <h2 className="contact-headline">
-                        Let's build something<br />
-                        <span className="contact-headline-accent">meaningful.</span>
-                    </h2>
-                    <p className="contact-subtext">
-                        I'm always open to discussing new opportunities, interesting projects or ideas related to AI, full-stack development and technology.
-                    </p>
+            {/* Shading overlays tuned so background artwork remains richly visible just like Hero */}
+            <div
+                className="contact-shade contact-shade-morning"
+                style={{ opacity: theme === 'light' ? 1 : 0 }}
+                aria-hidden="true"
+            />
+            <div
+                className="contact-shade contact-shade-evening"
+                style={{ opacity: theme === 'dark' ? 1 : 0 }}
+                aria-hidden="true"
+            />
 
-                    <div className="contact-links-list">
-                        <a href={`mailto:${profile.email}`} className="contact-link-row">
-                            <span className="contact-link-icon"><Mail size={18} /></span>
-                            <span className="contact-link-val">{profile.email}</span>
-                        </a>
-
-                        <a href={profile.linkedin || 'https://linkedin.com'} target="_blank" rel="noreferrer" className="contact-link-row">
-                            <span className="contact-link-icon"><Linkedin size={18} /></span>
-                            <span className="contact-link-val">linkedin.com/in/bholushubhankaranokha</span>
-                        </a>
-
-                        <a href={profile.github || 'https://github.com'} target="_blank" rel="noreferrer" className="contact-link-row">
-                            <span className="contact-link-icon"><Github size={18} /></span>
-                            <span className="contact-link-val">github.com/bholushubhankaranokha</span>
-                        </a>
-                    </div>
+            <div className="about-wrap contact-wrap">
+                {/* 1. Head line GET IN TOUCH same as ABOUT ME section */}
+                <div className="about-eyebrow-row contact-eyebrow-row">
+                    <span className="about-eyebrow-text">
+                        GET IN <span className="about-eyebrow-accent">TOUCH</span>
+                    </span>
+                    <span className="about-eyebrow-line" aria-hidden="true" />
                 </div>
 
-                <div className="contact-form-col">
-                    <form className="contact-glass-form" onSubmit={submit} noValidate>
-                        <div className="form-group">
-                            <input
-                                name="name"
-                                value={form.name}
-                                onChange={update}
-                                placeholder="Your Name"
-                                autoComplete="name"
-                                className="form-glass-input"
-                            />
+                <div className="contact-layout-wrap">
+                    <div className="contact-info-col">
+                        <h2 className="contact-headline">
+                            Let's build something<br />
+                            <span className="contact-headline-accent">meaningful.</span>
+                        </h2>
+                        <p className="contact-subtext">
+                            I'm always open to discussing new opportunities, interesting projects or ideas related to AI, full-stack development and technology.
+                        </p>
+
+                        <div className="contact-links-list">
+                            <a href={`mailto:${profile.email}`} className="contact-link-row">
+                                <span className="contact-link-icon"><Mail size={18} /></span>
+                                <span className="contact-link-val">{profile.email}</span>
+                            </a>
+
+                            <a href={profile.linkedin || 'https://linkedin.com'} target="_blank" rel="noreferrer" className="contact-link-row">
+                                <span className="contact-link-icon"><Linkedin size={18} /></span>
+                                <span className="contact-link-val">linkedin.com/in/bholushubhankaranokha</span>
+                            </a>
+
+                            <a href={profile.github || 'https://github.com'} target="_blank" rel="noreferrer" className="contact-link-row">
+                                <span className="contact-link-icon"><Github size={18} /></span>
+                                <span className="contact-link-val">github.com/bholushubhankaranokha</span>
+                            </a>
                         </div>
-                        <div className="form-group">
-                            <input
-                                name="email"
-                                type="email"
-                                value={form.email}
-                                onChange={update}
-                                placeholder="Your Email"
-                                autoComplete="email"
-                                className="form-glass-input"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <textarea
-                                name="message"
-                                value={form.message}
-                                onChange={update}
-                                placeholder="Your Message"
-                                rows="4"
-                                className="form-glass-textarea"
-                            />
-                        </div>
-                        <button className="contact-submit-btn" type="submit">
-                            Send Message <ArrowRight size={16} />
-                        </button>
-                        {feedback && <p className="form-feedback-text" role="status">{feedback}</p>}
-                    </form>
+                    </div>
+
+                    <div className="contact-form-col">
+                        <form className="contact-glass-form" onSubmit={submit} noValidate>
+                            <div className="form-group">
+                                <input
+                                    name="name"
+                                    value={form.name}
+                                    onChange={update}
+                                    placeholder="Your Name"
+                                    autoComplete="name"
+                                    className="form-glass-input"
+                                    disabled={status === 'sending'}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    name="email"
+                                    type="email"
+                                    value={form.email}
+                                    onChange={update}
+                                    placeholder="Your Email"
+                                    autoComplete="email"
+                                    className="form-glass-input"
+                                    disabled={status === 'sending'}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <textarea
+                                    name="message"
+                                    value={form.message}
+                                    onChange={update}
+                                    placeholder="Your Message"
+                                    rows="4"
+                                    className="form-glass-textarea"
+                                    disabled={status === 'sending'}
+                                />
+                            </div>
+                            <button
+                                className={`contact-submit-btn ${status === 'sending' ? 'contact-submit-btn-loading' : ''}`}
+                                type="submit"
+                                disabled={status === 'sending'}
+                            >
+                                {status === 'sending' ? (
+                                    <>
+                                        <Loader2 size={16} className="contact-btn-spin" /> Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        Send Message <ArrowRight size={16} />
+                                    </>
+                                )}
+                            </button>
+                            {feedback && (
+                                <div className={`form-feedback-card form-feedback-${status}`} role="status">
+                                    {status === 'success' && <CheckCircle size={16} className="form-feedback-icon" />}
+                                    {status === 'error' && <AlertCircle size={16} className="form-feedback-icon" />}
+                                    <div className="form-feedback-content">
+                                        <p className="form-feedback-text">{feedback}</p>
+                                        {status === 'error' && (
+                                            <a
+                                                href={`mailto:${profile.email}?subject=${encodeURIComponent(`Portfolio inquiry from ${form.name || 'Visitor'}`)}&body=${encodeURIComponent(form.message || '')}`}
+                                                className="form-feedback-mailto-link"
+                                            >
+                                                Send via mail app instead &rarr;
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -861,12 +986,14 @@ function Contact({ theme }) {
 function Footer() {
     return (
         <footer className="site-footer">
-            <div className="section-wrap footer-inner-wrap">
+            <div className="about-wrap footer-inner-wrap">
                 <div className="footer-left-brand">
-                    <a className="footer-brand-logo" href="#home">BS<span>.</span></a>
+                    <a className="footer-brand-logo-link" href="#home" aria-label="Bholu Home">
+                        <img src="/assets/favicon.png" alt="Bholu Logo" className="footer-brand-logo-img" />
+                    </a>
                     <div className="footer-brand-meta">
                         <span className="footer-brand-name">Bholu Shubhankar Anokha</span>
-                        <span className="footer-brand-sub">AI Engineer | Full-Stack Developer</span>
+                        <span className="footer-brand-sub">© {new Date().getFullYear()} All rights reserved.</span>
                     </div>
                 </div>
 

@@ -2,7 +2,6 @@ export const profile = {
   name: 'Bholu Shubhankar Anokha',
   role: 'AI/ML Engineer · Full-Stack Developer · Data Science | IoT',
   email: 'bholushubhankaranokha@gmail.com',
-  phone: '+91 7903071173',
   location: 'New Delhi, Delhi, India',
   github: 'https://github.com/bholushubhankaranokha',
   linkedin: 'https://linkedin.com',
@@ -186,19 +185,74 @@ export const education = [
 ];
 
 export const assistantKnowledge = [
-  { keys: ['who', 'about', 'bholu', 'yourself', 'introduction'], answer: `I'm ${profile.name}, an AI Engineer and Full-Stack Developer based in ${profile.location}. I enjoy building machine-learning projects, web applications, and IoT systems.` },
-  { keys: ['education', 'degree', 'college', 'btech', 'cgpa', 'diploma'], answer: 'I completed a B.Tech in Artificial Intelligence and Data Science at Bhagwan Parshuram Institute of Technology (CGPA 8.26). I also hold a Diploma in Electrical Engineering from Chhotu Ram Polytechnic.' },
-  { keys: ['skill', 'stack', 'technology', 'technologies', 'language'], answer: 'My skills include Python, C/C++, JavaScript, React, Redux, Node.js, Express, MongoDB, PostgreSQL, machine learning, deep learning, TensorFlow, PyTorch, NLP/LLMs, and IoT with Arduino and ESP32.' },
-  { keys: ['rescueai', 'rescue', 'flood'], answer: 'RescueAI is an AI-based flood victim detection project. It explores computer vision and deep-learning techniques to identify stranded people in aerial imagery and support disaster-response teams.' },
-  { keys: ['weather', 'bilstm', 'lstm', 'forecast'], answer: 'My Bi-LSTM Weather Forecasting project uses time-series modelling with Python, TensorFlow, and Keras, including comparisons between LSTM and Bi-LSTM approaches.' },
-  { keys: ['air quality', 'air-quality', 'esp32', 'iot'], answer: 'The Smart AI-Based Air Quality Monitoring project combines gas sensors and ESP32 with machine-learning ideas to classify air-quality levels and visualize readings.' },
-  { keys: ['logiedge', 'billing'], answer: 'LogiEdge is a billing-management dashboard project using React on the frontend and a Node.js/Express/PostgreSQL stack.' },
-  { keys: ['razorpay', 'payment'], answer: 'The Razorpay Clone is a responsive payment-website interface built with HTML, Tailwind CSS, and Vite.' },
-  { keys: ['intern', 'experience', 'vibhum', 'ostr ichfit', 'ostrichfit'], answer: 'I worked remotely as a Web Developer Intern at Vibhum Software from July to August 2024, contributing to web applications, REST APIs, responsive UI, and frontend/backend integration for Ostrichfit.com.' },
-  { keys: ['resume', 'résumé', 'cv', 'download'], answer: 'You can view or download my résumé using the Résumé section on this page. The PDF is included with this website.' },
-  { keys: ['certificate', 'certification'], answer: 'Certificate images can be added to the Certificates section. Only genuine certificates and verification links should be listed there.' },
-  { keys: ['contact', 'email', 'reach', 'phone', 'hire', 'collaborate'], answer: `You can reach me at ${profile.email} or call ${profile.phone}. Use the contact form and it will prepare an email in your default mail application.` },
-  { keys: ['github', 'repository', 'repo', 'code'], answer: 'Project repository links are not configured yet. Add your verified GitHub profile and repository URLs to src/data/portfolio.js and the project data.' },
-  { keys: ['radar', 'arduino'], answer: 'My Arduino RADAR project uses an ultrasonic sensor and servo motor to detect objects and display distance readings over serial communication.' },
-  { keys: ['navigate', 'sections', 'website'], answer: 'Use the navigation at the top to explore About, Skills, Projects, Résumé, GitHub activity, Certificates, and Contact. The floating assistant can answer questions about my work.' }
+  {
+    keys: ['who', 'about', 'bholu', 'yourself', 'introduction', 'bio'],
+    answer: "I'm Bholu Shubhankar Anokha, an AI Engineer and Full-Stack Developer based in New Delhi, India. I specialize in Machine Learning, Deep Learning, Computer Vision, Generative AI, and modern web development. I love turning innovative ideas into practical, intelligent, and scalable solutions!"
+  },
+  {
+    keys: ['project', 'work', 'portfolio', 'featured', 'built'],
+    answer: "Here are some of Bholu's major projects:\n• 1. RescueAI — Autonomous Flood Victim Detection using YOLO11, SAHI, LLaVA & DeepSeek-R1.\n• 2. LogiEdge — Full-stack billing management dashboard built with React, Node.js, Express, and PostgreSQL.\n• 3. Razorpay Clone — Pixel-perfect payment gateway web interface built with HTML, Tailwind CSS, and Vite.\n• 4. Bi-LSTM Weather Forecasting — Deep learning time-series meteorological prediction model.\n• 5. Smart Air Quality Monitoring — Embedded IoT system with MQ gas sensors & ESP32."
+  },
+  {
+    keys: ['rescueai', 'rescue', 'flood', 'disaster', 'victim'],
+    answer: "RescueAI is an autonomous disaster intelligence system designed to detect flood victims from aerial and drone imagery. It combines YOLO11 for high-precision object detection, SAHI for sliced inference on small human targets, and LLaVA with DeepSeek-R1 for vision-language situational reasoning and automated rescue coordination reports."
+  },
+  {
+    keys: ['logiedge', 'billing', 'invoice', 'dashboard'],
+    answer: "LogiEdge is a full-stack billing and operations management dashboard built with React, Node.js, Express.js, and PostgreSQL. It features real-time invoice generation, product inventory tracking, customer analytics, and revenue summaries with instant export options."
+  },
+  {
+    keys: ['razorpay', 'payment', 'clone'],
+    answer: "The Razorpay Clone is a modern, responsive fintech payment platform interface built with HTML, Tailwind CSS, and Vite, featuring developer integration flows, banking product showcases, and mobile-first responsive design."
+  },
+  {
+    keys: ['weather', 'forecast', 'bilstm', 'lstm'],
+    answer: "The Bi-LSTM Weather Forecasting project implements bidirectional Long Short-Term Memory neural networks using Python, TensorFlow, and Keras. It captures temporal sequence dependencies to predict weather parameters with significantly higher accuracy than standard unidirectional models."
+  },
+  {
+    keys: ['iot', 'air quality', 'sensor', 'esp32', 'arduino', 'radar', 'hardware'],
+    answer: "Bholu has developed multiple embedded and IoT systems:\n• Smart AI-Based Air Quality Monitor: Real-time environmental tracking with MQ gas sensors, ESP32, and ML-based air quality classification.\n• Arduino RADAR System: Ultrasonic sensor and servo motor system tracking and mapping surrounding objects via serial communication."
+  },
+  {
+    keys: ['skill', 'stack', 'technology', 'technologies', 'language', 'tools'],
+    answer: "Bholu's core technical skills include:\n• AI & Machine Learning: Python, TensorFlow, PyTorch, Keras, scikit-learn, OpenCV, YOLO11, SAHI, CNN, RNN, LSTM, Bi-LSTM, GenAI / LLMs, RAG, LLaVA, DeepSeek-R1.\n• Full-Stack Development: JavaScript, React, Redux, Node.js, Express.js, PostgreSQL, MongoDB, HTML5, CSS3, Tailwind CSS, Vite.\n• Hardware & Tools: Arduino, ESP32, Git/GitHub, Postman, Google Colab, VS Code."
+  },
+  {
+    keys: ['education', 'degree', 'college', 'btech', 'cgpa', 'diploma', 'school', 'university'],
+    answer: "Bholu's educational background:\n• B.Tech in Artificial Intelligence & Data Science at Bhagwan Parshuram Institute of Technology (CGPA 8.26 · 2022–2026).\n• Diploma in Electrical Engineering from Chhotu Ram Polytechnic (77.70% · 2019–2022).\n• Class 10 from Harihar Singh Academy (69.40% · 2018–2019)."
+  },
+  {
+    keys: ['certificate', 'certification', 'achievement', 'achievements'],
+    answer: "Bholu holds 3 verified certifications:\n1. ChatGPT for Students · The Bharat AI Initiative — HCL GUVI (Powered by OpenAI).\n2. Java Training & Certification — Spoken Tutorial, IIT Bombay.\n3. AI/ML Launchpad Bootcamp — Physics Wallah & NSDC.\nYou can inspect each high-resolution certificate directly in the Certificates & Achievements section on this page!"
+  },
+  {
+    keys: ['intern', 'experience', 'job', 'vibhum', 'ostrichfit'],
+    answer: "Bholu worked as a Web Developer Intern at Vibhum Software (July – August 2024), where he developed responsive user interfaces, built scalable RESTful APIs, optimized database operations, and led frontend/backend integration for Ostrichfit.com."
+  },
+  {
+    keys: ['resume', 'résumé', 'cv', 'download', 'pdf'],
+    answer: "You can view and download Bholu's official résumé directly in the 'MY RESUME' section of this website, or use the 'Download Resume' button at the top right of the navigation bar!"
+  },
+  {
+    keys: ['github', 'repository', 'repo', 'code', 'contribution', 'snake', 'commits'],
+    answer: "Bholu is active on GitHub with 200+ contributions over the past year, 15+ repositories, and 3+ major projects. Check out the interactive GitHub Activity and Contribution Snake tracker on this portfolio or visit https://github.com/bholushubhankaranokha!"
+  },
+  {
+    keys: ['contact', 'email', 'reach', 'hire', 'collaborate', 'message'],
+    answer: `You can easily connect with Bholu:\n• Email: ${profile.email}\n• LinkedIn: linkedin.com/in/bholushubhankaranokha\n• Contact Form: Scroll down to the 'GET IN TOUCH' section — the form connects directly via EmailJS to deliver your message instantly!`
+  },
+  {
+    keys: ['phone', 'call', 'number', 'mobile', 'whatsapp'],
+    answer: `For business inquiries and collaborations, please reach out via Email (${profile.email}), LinkedIn, or submit a message using the 'GET IN TOUCH' contact form on this portfolio!`
+  },
+  {
+    keys: ['hello', 'hi', 'hey', 'greetings', 'namaste'],
+    answer: `Hello there! 👋 I'm Bholu's AI Assistant. Ask me anything about his AI/ML projects, technical skills, certifications, education, resume, or contact details!`
+  }
 ];
+
+export const emailjsConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ''
+};
