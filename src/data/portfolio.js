@@ -4,8 +4,8 @@ export const profile = {
   email: 'bholushubhankaranokha@gmail.com',
   phone: '+91 7903071173',
   location: 'New Delhi, Delhi, India',
-  github: '',
-  linkedin: '',
+  github: 'https://github.com/bholushubhankaranokha',
+  linkedin: 'https://linkedin.com',
   summary: "I'm Bholu Shubhankar Anokha, an AI Engineer and Full-Stack Developer passionate about transforming ideas into intelligent solutions. With a background in Artificial Intelligence and Data Science, I specialize in Machine Learning, Deep Learning, Generative AI, and modern web development. From building AI-powered systems like RescueAI to developing scalable web applications, I enjoy solving real-world challenges through technology. I believe in continuous learning, creative problem-solving, and innovation, with a goal of building impactful products that make technology smarter, more accessible, and meaningful."
 };
 
@@ -150,39 +150,25 @@ export const skillGroups = [
 
 export const certificates = [
   {
-    id: 'nptel',
-    title: 'Deep Learning',
-    issuer: 'NPTEL',
-    image: '/assets/certificates/nptel-deep-learning.png',
-    link: '#'
+    id: 'hcl-guvi',
+    title: 'ChatGPT for Students · The Bharat AI Initiative',
+    issuer: 'HCL GUVI · Powered by OpenAI',
+    image: '/assets/certificates/HCL GUVI.png',
+    link: '/assets/certificates/HCL GUVI.png'
   },
   {
-    id: 'coursera',
-    title: 'Machine Learning',
-    issuer: 'Coursera',
-    image: '/assets/certificates/coursera-ml.png',
-    link: '#'
+    id: 'iit-bombay',
+    title: 'Java Training & Certification',
+    issuer: 'IIT Bombay · Spoken Tutorial',
+    image: '/assets/certificates/IIT Java Training.jpeg',
+    link: '/assets/certificates/IIT Java Training.jpeg'
   },
   {
-    id: 'udemy',
-    title: 'React Development',
-    issuer: 'Udemy',
-    image: '/assets/certificates/udemy-react.png',
-    link: '#'
-  },
-  {
-    id: 'hackerrank',
-    title: 'Python Programming',
-    issuer: 'HackerRank',
-    image: '/assets/certificates/hackerrank-python.png',
-    link: '#'
-  },
-  {
-    id: 'hackathon',
-    title: 'Hackathon',
-    issuer: 'Participation',
-    image: '/assets/certificates/hackathon.png',
-    link: '#'
+    id: 'pw-aiml',
+    title: 'AI/ML Launchpad Bootcamp',
+    issuer: 'Physics Wallah · NSDC',
+    image: '/assets/certificates/Banking Chatbot.png',
+    link: '/assets/certificates/Banking Chatbot.png'
   }
 ];
 
@@ -194,25 +180,25 @@ export const githubStats = [
 ];
 
 export const education = [
-  { date:'2022 — 2026', title:'B.Tech · Artificial Intelligence & Data Science', place:'Bhagwan Parshuram Institute of Technology', detail:'CGPA 8.26 · New Delhi, India' },
-  { date:'2019 — 2022', title:'Diploma · Electrical Engineering', place:'Chhotu Ram Polytechnic', detail:'77.70% · Haryana, India' },
-  { date:'2018 — 2019', title:'Class 10', place:'Harihar Singh Academy', detail:'69.40% · Uttar Pradesh, India' }
+  { date: '2022 — 2026', title: 'B.Tech · Artificial Intelligence & Data Science', place: 'Bhagwan Parshuram Institute of Technology', detail: 'CGPA 8.26 · New Delhi, India' },
+  { date: '2019 — 2022', title: 'Diploma · Electrical Engineering', place: 'Chhotu Ram Polytechnic', detail: '77.70% · Haryana, India' },
+  { date: '2018 — 2019', title: 'Class 10', place: 'Harihar Singh Academy', detail: '69.40% · Uttar Pradesh, India' }
 ];
 
 export const assistantKnowledge = [
-  { keys:['who','about','bholu','yourself','introduction'], answer:`I'm ${profile.name}, an AI Engineer and Full-Stack Developer based in ${profile.location}. I enjoy building machine-learning projects, web applications, and IoT systems.` },
-  { keys:['education','degree','college','btech','cgpa','diploma'], answer:'I completed a B.Tech in Artificial Intelligence and Data Science at Bhagwan Parshuram Institute of Technology (CGPA 8.26). I also hold a Diploma in Electrical Engineering from Chhotu Ram Polytechnic.' },
-  { keys:['skill','stack','technology','technologies','language'], answer:'My skills include Python, C/C++, JavaScript, React, Redux, Node.js, Express, MongoDB, PostgreSQL, machine learning, deep learning, TensorFlow, PyTorch, NLP/LLMs, and IoT with Arduino and ESP32.' },
-  { keys:['rescueai','rescue','flood'], answer:'RescueAI is an AI-based flood victim detection project. It explores computer vision and deep-learning techniques to identify stranded people in aerial imagery and support disaster-response teams.' },
-  { keys:['weather','bilstm','lstm','forecast'], answer:'My Bi-LSTM Weather Forecasting project uses time-series modelling with Python, TensorFlow, and Keras, including comparisons between LSTM and Bi-LSTM approaches.' },
-  { keys:['air quality','air-quality','esp32','iot'], answer:'The Smart AI-Based Air Quality Monitoring project combines gas sensors and ESP32 with machine-learning ideas to classify air-quality levels and visualize readings.' },
-  { keys:['logiedge','billing'], answer:'LogiEdge is a billing-management dashboard project using React on the frontend and a Node.js/Express/PostgreSQL stack.' },
-  { keys:['razorpay','payment'], answer:'The Razorpay Clone is a responsive payment-website interface built with HTML, Tailwind CSS, and Vite.' },
-  { keys:['intern','experience','vibhum','ostr ichfit','ostrichfit'], answer:'I worked remotely as a Web Developer Intern at Vibhum Software from July to August 2024, contributing to web applications, REST APIs, responsive UI, and frontend/backend integration for Ostrichfit.com.' },
-  { keys:['resume','résumé','cv','download'], answer:'You can view or download my résumé using the Résumé section on this page. The PDF is included with this website.' },
-  { keys:['certificate','certification'], answer:'Certificate images can be added to the Certificates section. Only genuine certificates and verification links should be listed there.' },
-  { keys:['contact','email','reach','phone','hire','collaborate'], answer:`You can reach me at ${profile.email} or call ${profile.phone}. Use the contact form and it will prepare an email in your default mail application.` },
-  { keys:['github','repository','repo','code'], answer:'Project repository links are not configured yet. Add your verified GitHub profile and repository URLs to src/data/portfolio.js and the project data.' },
-  { keys:['radar','arduino'], answer:'My Arduino RADAR project uses an ultrasonic sensor and servo motor to detect objects and display distance readings over serial communication.' },
-  { keys:['navigate','sections','website'], answer:'Use the navigation at the top to explore About, Skills, Projects, Résumé, GitHub activity, Certificates, and Contact. The floating assistant can answer questions about my work.' }
+  { keys: ['who', 'about', 'bholu', 'yourself', 'introduction'], answer: `I'm ${profile.name}, an AI Engineer and Full-Stack Developer based in ${profile.location}. I enjoy building machine-learning projects, web applications, and IoT systems.` },
+  { keys: ['education', 'degree', 'college', 'btech', 'cgpa', 'diploma'], answer: 'I completed a B.Tech in Artificial Intelligence and Data Science at Bhagwan Parshuram Institute of Technology (CGPA 8.26). I also hold a Diploma in Electrical Engineering from Chhotu Ram Polytechnic.' },
+  { keys: ['skill', 'stack', 'technology', 'technologies', 'language'], answer: 'My skills include Python, C/C++, JavaScript, React, Redux, Node.js, Express, MongoDB, PostgreSQL, machine learning, deep learning, TensorFlow, PyTorch, NLP/LLMs, and IoT with Arduino and ESP32.' },
+  { keys: ['rescueai', 'rescue', 'flood'], answer: 'RescueAI is an AI-based flood victim detection project. It explores computer vision and deep-learning techniques to identify stranded people in aerial imagery and support disaster-response teams.' },
+  { keys: ['weather', 'bilstm', 'lstm', 'forecast'], answer: 'My Bi-LSTM Weather Forecasting project uses time-series modelling with Python, TensorFlow, and Keras, including comparisons between LSTM and Bi-LSTM approaches.' },
+  { keys: ['air quality', 'air-quality', 'esp32', 'iot'], answer: 'The Smart AI-Based Air Quality Monitoring project combines gas sensors and ESP32 with machine-learning ideas to classify air-quality levels and visualize readings.' },
+  { keys: ['logiedge', 'billing'], answer: 'LogiEdge is a billing-management dashboard project using React on the frontend and a Node.js/Express/PostgreSQL stack.' },
+  { keys: ['razorpay', 'payment'], answer: 'The Razorpay Clone is a responsive payment-website interface built with HTML, Tailwind CSS, and Vite.' },
+  { keys: ['intern', 'experience', 'vibhum', 'ostr ichfit', 'ostrichfit'], answer: 'I worked remotely as a Web Developer Intern at Vibhum Software from July to August 2024, contributing to web applications, REST APIs, responsive UI, and frontend/backend integration for Ostrichfit.com.' },
+  { keys: ['resume', 'résumé', 'cv', 'download'], answer: 'You can view or download my résumé using the Résumé section on this page. The PDF is included with this website.' },
+  { keys: ['certificate', 'certification'], answer: 'Certificate images can be added to the Certificates section. Only genuine certificates and verification links should be listed there.' },
+  { keys: ['contact', 'email', 'reach', 'phone', 'hire', 'collaborate'], answer: `You can reach me at ${profile.email} or call ${profile.phone}. Use the contact form and it will prepare an email in your default mail application.` },
+  { keys: ['github', 'repository', 'repo', 'code'], answer: 'Project repository links are not configured yet. Add your verified GitHub profile and repository URLs to src/data/portfolio.js and the project data.' },
+  { keys: ['radar', 'arduino'], answer: 'My Arduino RADAR project uses an ultrasonic sensor and servo motor to detect objects and display distance readings over serial communication.' },
+  { keys: ['navigate', 'sections', 'website'], answer: 'Use the navigation at the top to explore About, Skills, Projects, Résumé, GitHub activity, Certificates, and Contact. The floating assistant can answer questions about my work.' }
 ];

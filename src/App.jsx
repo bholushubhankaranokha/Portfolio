@@ -23,7 +23,7 @@ import {
     Sun,
     X
 } from 'lucide-react';
-import { profile, projects, skillGroups, certificates, githubStats } from './data/portfolio';
+import { profile, projects, skillGroups, certificates } from './data/portfolio';
 import { useTheme } from './hooks/useTheme';
 import { TechIcon } from './components/TechIcons';
 import PortfolioAssistant from './components/PortfolioAssistant';
@@ -442,8 +442,8 @@ function Skills({ theme }) {
                     ))}
                 </div>
 
-                <div 
-                    className="skills-marquee-container" 
+                <div
+                    className="skills-marquee-container"
                     aria-label="Skills marquee"
                     onMouseEnter={() => { isHovered.current = true; }}
                     onMouseLeave={() => { isHovered.current = false; }}
@@ -455,7 +455,7 @@ function Skills({ theme }) {
                         {marqueeItems.map((s, i) => (
                             <div key={`${s}-${i}`} className="skills-marquee-card">
                                 <div className="skills-icon-wrap">
-                                    <TechIcon name={s} size={64} />
+                                    <TechIcon name={s} size={78} />
                                 </div>
                                 <span className="skills-tech-name">{s}</span>
                             </div>
@@ -468,22 +468,24 @@ function Skills({ theme }) {
 }
 
 function Projects({ theme }) {
-    const [showAll, setShowAll] = useState(false);
-    const displayedProjects = showAll ? projects : projects.filter(p => p.featured);
+    const displayedProjects = projects.filter(p => p.featured);
 
     return (
-        <section id="projects" className="section projects-section">
-            <div className="section-wrap">
-                <div className="section-header-row">
-                    <div>
-                        <span className="section-eyebrow-accent">FEATURED PROJECTS</span>
-                    </div>
-                    <button
-                        className="section-header-btn"
-                        onClick={() => setShowAll(!showAll)}
+        <section id="projects" className="projects-section">
+            <div className="about-wrap projects-wrap">
+                <div className="about-eyebrow-row projects-eyebrow-row">
+                    <span className="about-eyebrow-text">
+                        FEATURED <span className="about-eyebrow-accent">PROJECTS</span>
+                    </span>
+                    <span className="about-eyebrow-line" aria-hidden="true" />
+                    <a
+                        href="https://github.com/bholushubhankaranokha?tab=repositories"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="projects-header-btn"
                     >
-                        {showAll ? 'Show Featured' : 'View All Projects'} <ArrowRight size={14} />
-                    </button>
+                        View All Projects <ArrowRight size={14} />
+                    </a>
                 </div>
 
                 <div className="featured-projects-grid">
@@ -547,15 +549,21 @@ function Projects({ theme }) {
 
 function Resume({ theme }) {
     return (
-        <section id="resume" className="section resume-section">
-            <div className="section-wrap">
+        <section id="resume" className="resume-section">
+            <div className="about-wrap resume-wrap">
+                <div className="about-eyebrow-row resume-eyebrow-row">
+                    <span className="about-eyebrow-text">
+                        MY <span className="about-eyebrow-accent">RESUME</span>
+                    </span>
+                    <span className="about-eyebrow-line" aria-hidden="true" />
+                </div>
+
                 <div className="resume-showcase-card">
                     <div className="resume-card-left">
                         <div className="resume-card-icon">
-                            <FileText size={30} />
+                            <FileText size={40} />
                         </div>
                         <div className="resume-card-info">
-                            <span className="section-eyebrow-accent">MY RESUME</span>
                             <h2 className="resume-card-title">View or Download My Resume</h2>
                             <p className="resume-card-desc">
                                 A detailed overview of my education, skills, projects and experience.
@@ -587,94 +595,105 @@ function Resume({ theme }) {
 }
 
 function GithubActivity({ theme }) {
-    const weeks = useMemo(() => {
-        return Array.from({ length: 44 }, (_, w) =>
-            Array.from({ length: 7 }, (_, d) => {
-                const seed = (w * 13 + d * 7 + (w % 5) * 3) % 20;
-                let level = 0;
-                if (seed > 14) level = 4;
-                else if (seed > 10) level = 3;
-                else if (seed > 6) level = 2;
-                else if (seed > 3) level = 1;
-                return { id: `${w}-${d}`, level };
-            })
-        );
-    }, []);
-
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
     return (
-        <section className="section github-section">
-            <div className="section-wrap">
-                <div className="section-header-compact">
-                    <span className="section-eyebrow-accent">GITHUB ACTIVITY</span>
-                    <h2 className="section-main-heading">My Coding Journey</h2>
+        <section id="github" className="github-section">
+            <div className="about-wrap github-wrap">
+                <div className="about-eyebrow-row github-eyebrow-row">
+                    <span className="about-eyebrow-text">
+                        GITHUB <span className="about-eyebrow-accent">ACTIVITY</span>
+                    </span>
+                    <span className="about-eyebrow-line" aria-hidden="true" />
+                    <a
+                        href="https://github.com/bholushubhankaranokha"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="projects-header-btn"
+                    >
+                        GitHub Profile <ArrowUpRight size={14} />
+                    </a>
                 </div>
 
-                <div className="github-showcase-row">
-                    <div className="github-stats-grid">
-                        <div className="github-stat-card">
-                            <div className="github-stat-icon"><Github size={18} /></div>
-                            <div className="github-stat-text">
-                                <span className="github-stat-val">200+</span>
-                                <span className="github-stat-label">Contributions<br />in the last year</span>
+                {/* Contribution Snake Showcase Card */}
+                <div className="github-snake-card">
+                    <div className="github-snake-header">
+                        <div className="github-snake-header-left">
+                            <div className="github-snake-badge-icon">
+                                <Github size={20} />
+                            </div>
+                            <div>
+                                <h3 className="github-snake-title">Contribution Snake</h3>
+                                <p className="github-snake-desc">Interactive commit trail slithering across the year's contribution matrix</p>
                             </div>
                         </div>
-
-                        <div className="github-stat-card">
-                            <div className="github-stat-icon"><FolderGit2 size={18} /></div>
-                            <div className="github-stat-text">
-                                <span className="github-stat-val">15+</span>
-                                <span className="github-stat-label">Repositories</span>
-                            </div>
-                        </div>
-
-                        <div className="github-stat-card">
-                            <div className="github-stat-icon"><Layers size={18} /></div>
-                            <div className="github-stat-text">
-                                <span className="github-stat-val">3+</span>
-                                <span className="github-stat-label">Major Projects</span>
-                            </div>
-                        </div>
-
-                        <div className="github-stat-card">
-                            <div className="github-stat-icon"><GitCommit size={18} /></div>
-                            <div className="github-stat-text">
-                                <span className="github-stat-val">100+</span>
-                                <span className="github-stat-label">Commits</span>
-                            </div>
+                        <div className="github-live-indicator">
+                            <span className="github-pulse-dot" />
+                            <span>LIVE CONTRIBUTIONS</span>
                         </div>
                     </div>
 
-                    <div className="github-heatmap-card">
-                        <div className="heatmap-months-header">
-                            {months.map(m => <span key={m}>{m}</span>)}
-                        </div>
-                        <div className="heatmap-matrix-scroll">
-                            <div className="heatmap-matrix">
-                                {weeks.map((col, wIdx) => (
-                                    <div key={wIdx} className="heatmap-column">
-                                        {col.map(cell => (
-                                            <span
-                                                key={cell.id}
-                                                className={`heatmap-cell heat-level-${cell.level}`}
-                                                title={`Activity level ${cell.level}`}
-                                            />
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="heatmap-footer-row">
-                            <span className="heatmap-legend-label">Less</span>
-                            <div className="heatmap-legend-cells">
-                                {[0, 1, 2, 3, 4].map(lvl => (
-                                    <span key={lvl} className={`heatmap-cell heat-level-${lvl}`} />
-                                ))}
-                            </div>
-                            <span className="heatmap-legend-label">More</span>
-                        </div>
+                    <div className="github-snake-viewport">
+                        <img
+                            key={`snake-${theme}`}
+                            src={theme === 'dark' ? '/assets/github-contribution-grid-snake-dark.svg' : '/assets/github-contribution-grid-snake.svg'}
+                            alt="GitHub Contribution Snake"
+                            className="github-snake-svg"
+                            loading="lazy"
+                        />
                     </div>
+                </div>
+
+                {/* GitHub Stats Row (Hero Theme) */}
+                <div className="github-stats-cards-grid">
+                    {/* Card 1: Main Stats */}
+                    <a
+                        href="https://github.com/bholushubhankaranokha"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="github-stat-card-box"
+                        title="View GitHub Profile Stats"
+                    >
+                        <img
+                            key={`stats-${theme}`}
+                            src={theme === 'dark' ? '/assets/github-stats-dark.svg' : '/assets/github-stats-light.svg'}
+                            alt="Bholu Shubhankar Anokha's GitHub Stats"
+                            className="github-stat-widget-img"
+                            loading="lazy"
+                        />
+                    </a>
+
+                    {/* Card 2: Most Used Languages */}
+                    <a
+                        href="https://github.com/bholushubhankaranokha?tab=repositories"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="github-stat-card-box"
+                        title="View Most Used Languages"
+                    >
+                        <img
+                            key={`langs-${theme}`}
+                            src={theme === 'dark' ? '/assets/github-top-langs-dark.svg' : '/assets/github-top-langs-light.svg'}
+                            alt="Most Used Languages"
+                            className="github-stat-widget-img"
+                            loading="lazy"
+                        />
+                    </a>
+
+                    {/* Card 3: Streak Stats */}
+                    <a
+                        href="https://github.com/bholushubhankaranokha"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="github-stat-card-box"
+                        title="View GitHub Streak"
+                    >
+                        <img
+                            key={`streak-${theme}`}
+                            src={theme === 'dark' ? '/assets/github-streak-dark.svg' : '/assets/github-streak-light.svg'}
+                            alt="GitHub Streak"
+                            className="github-stat-widget-img"
+                            loading="lazy"
+                        />
+                    </a>
                 </div>
             </div>
         </section>
@@ -683,16 +702,13 @@ function GithubActivity({ theme }) {
 
 function Certificates({ theme }) {
     return (
-        <section id="certificates" className="section certificates-section">
-            <div className="section-wrap">
-                <div className="section-header-row">
-                    <div>
-                        <span className="section-eyebrow-accent">CERTIFICATES & ACHIEVEMENTS</span>
-                        <h2 className="section-main-heading">My Achievements</h2>
-                    </div>
-                    <a href="#contact" className="section-header-btn">
-                        View All Certificates <ArrowRight size={14} />
-                    </a>
+        <section id="certificates" className="certificates-section">
+            <div className="about-wrap certificates-wrap">
+                <div className="about-eyebrow-row certificates-eyebrow-row">
+                    <span className="about-eyebrow-text">
+                        CERTIFICATES &amp; <span className="about-eyebrow-accent">ACHIEVEMENTS</span>
+                    </span>
+                    <span className="about-eyebrow-line" aria-hidden="true" />
                 </div>
 
                 <div className="certificates-cards-grid">
@@ -703,19 +719,38 @@ function Certificates({ theme }) {
                             initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0 }}
-                            transition={{ duration: 0.35, delay: i * 0.04 }}
+                            transition={{ duration: 0.35, delay: i * 0.05 }}
                         >
-                            <div className="certificate-img-container">
+                            <a
+                                href={c.image}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="certificate-img-container"
+                                title={`View ${c.title} Certificate`}
+                            >
                                 <img
                                     src={c.image}
                                     alt={c.title}
                                     className="certificate-thumb-img"
                                     loading="lazy"
                                 />
-                            </div>
+                            </a>
+
                             <div className="certificate-meta-info">
+                                <span className="certificate-issuer-badge">{c.issuer}</span>
                                 <h4 className="certificate-title-text">{c.title}</h4>
-                                <span className="certificate-issuer-text">{c.issuer}</span>
+
+                                <div className="certificate-actions-row">
+                                    <a
+                                        href={c.image}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="certificate-view-btn"
+                                        title={`Open ${c.title} Certificate in new window`}
+                                    >
+                                        <Eye size={15} /> View Certificate
+                                    </a>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
