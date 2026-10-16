@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f1e9" />
+  <meta name="description" content="Portfolio of Bholu Shubhankar Anokha — AI Engineer and Full-Stack Developer." />
+
+  <!-- Transparent Favicon -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/favicon.png" />
+
+  <!-- Preload Hero Assets for Instant Morning/Evening Crossfade -->
+  <link rel="preload" as="image" href="/assets/morning-hero.png" />
+  <link rel="preload" as="image" href="/assets/eveing-hero.png" />
+
+  <title>Bholu Shubhankar Anokha — Portfolio</title>
+  <script>
+    (function () {
+      try {
+        var urlTheme = new URLSearchParams(window.location.search).get('theme');
+        var theme = urlTheme || localStorage.getItem('bholu-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark');
+        if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
