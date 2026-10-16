@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://bholushubhankar.vercel.app/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://bholushubhankar.vercel.app/assets/about-portrait.png</image:loc>
+      <image:title>Bholu Shubhankar Anokha — AI Engineer &amp; Full-Stack Developer</image:title>
+      <image:caption>Portrait of Bholu Shubhankar Anokha, AI Engineer and Full-Stack Developer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholushubhankar.vercel.app/assets/projects/rescueai.png</image:loc>
+      <image:title>RescueAI Flood Victim Detection System</image:title>
+      <image:caption>Autonomous disaster intelligence system by Bholu Shubhankar Anokha</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholushubhankar.vercel.app/assets/projects/logiedge.png</image:loc>
+      <image:title>LogiEdge Logistics Optimization</image:title>
+      <image:caption>Full-stack warehouse route optimization application by Bholu Shubhankar Anokha</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bholushubhankar.vercel.app/#about</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bholushubhankar.vercel.app/#skills</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bholushubhankar.vercel.app/#projects</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bholushubhankar.vercel.app/#resume</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bholushubhankar.vercel.app/#github</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bholushubhankar.vercel.app/#certificates</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bholushubhankar.vercel.app/#contact</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

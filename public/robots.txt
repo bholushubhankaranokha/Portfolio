@@ -1,0 +1,9 @@
+# Robots.txt for Bholu Shubhankar Anokha Portfolio
+# Website: https://bholushubhankar.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Host & Sitemap
+Host: https://bholushubhankar.vercel.app
+Sitemap: https://bholushubhankar.vercel.app/sitemap.xml

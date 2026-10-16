@@ -64,7 +64,7 @@ function Header({ theme, toggleTheme }) {
     return (
         <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
             <a className="brand" href="#home" aria-label="Bholu home" onClick={() => setActiveSection('home')}>
-                <img src="/assets/favicon.png" alt="Bholu Logo" className="brand-logo" />
+                <img src="/assets/favicon.png" alt="Bholu Shubhankar Anokha Logo" className="brand-logo" width="62" height="62" decoding="async" />
             </a>
             <nav className={menu ? 'nav-links open' : 'nav-links'}>
                 {nav.map(([label, id]) => (
@@ -280,8 +280,12 @@ function About({ theme }) {
                     <div className="about-showcase-visual">
                         <img
                             src="/assets/about-portrait.png"
-                            alt="Bholu Shubhankar Anokha"
+                            alt="Bholu Shubhankar Anokha - AI Engineer & Full-Stack Developer"
                             className="about-portrait-img"
+                            loading="lazy"
+                            decoding="async"
+                            width="480"
+                            height="560"
                         />
                     </div>
 
@@ -506,9 +510,10 @@ function Projects({ theme }) {
                             <div className="project-thumb-wrap">
                                 <img
                                     src={p.image}
-                                    alt={p.title}
+                                    alt={`${p.title} - ${p.subtitle} by Bholu Shubhankar Anokha`}
                                     className="project-thumb-img"
                                     loading="lazy"
+                                    decoding="async"
                                 />
                                 <span className="project-category-badge">{p.category}</span>
                             </div>
@@ -639,9 +644,10 @@ function GithubActivity({ theme }) {
                         <img
                             key={`snake-${theme}`}
                             src={theme === 'dark' ? '/assets/github-contribution-grid-snake-dark.svg' : '/assets/github-contribution-grid-snake.svg'}
-                            alt="GitHub Contribution Snake"
+                            alt="Bholu Shubhankar Anokha GitHub Contribution Graph Snake Animation"
                             className="github-snake-svg"
                             loading="lazy"
+                            decoding="async"
                         />
                     </div>
                 </div>
@@ -659,9 +665,10 @@ function GithubActivity({ theme }) {
                         <img
                             key={`stats-${theme}`}
                             src={theme === 'dark' ? '/assets/github-stats-dark.svg' : '/assets/github-stats-light.svg'}
-                            alt="Bholu Shubhankar Anokha's GitHub Stats"
+                            alt="Bholu Shubhankar Anokha GitHub Contributions & Repositories Stats"
                             className="github-stat-widget-img"
                             loading="lazy"
+                            decoding="async"
                         />
                     </a>
 
@@ -676,9 +683,10 @@ function GithubActivity({ theme }) {
                         <img
                             key={`langs-${theme}`}
                             src={theme === 'dark' ? '/assets/github-top-langs-dark.svg' : '/assets/github-top-langs-light.svg'}
-                            alt="Most Used Languages"
+                            alt="Bholu Shubhankar Anokha Most Used Programming Languages on GitHub"
                             className="github-stat-widget-img"
                             loading="lazy"
+                            decoding="async"
                         />
                     </a>
 
@@ -693,9 +701,10 @@ function GithubActivity({ theme }) {
                         <img
                             key={`streak-${theme}`}
                             src={theme === 'dark' ? '/assets/github-streak-dark.svg' : '/assets/github-streak-light.svg'}
-                            alt="GitHub Streak"
+                            alt="Bholu Shubhankar Anokha GitHub Contribution Streak"
                             className="github-stat-widget-img"
                             loading="lazy"
+                            decoding="async"
                         />
                     </a>
                 </div>
@@ -734,9 +743,10 @@ function Certificates({ theme }) {
                             >
                                 <img
                                     src={c.image}
-                                    alt={c.title}
+                                    alt={`${c.title} Certificate issued by ${c.issuer} - Bholu Shubhankar Anokha`}
                                     className="certificate-thumb-img"
                                     loading="lazy"
+                                    decoding="async"
                                 />
                             </a>
 
@@ -989,7 +999,7 @@ function Footer() {
             <div className="about-wrap footer-inner-wrap">
                 <div className="footer-left-brand">
                     <a className="footer-brand-logo-link" href="#home" aria-label="Bholu Home">
-                        <img src="/assets/favicon.png" alt="Bholu Logo" className="footer-brand-logo-img" />
+                        <img src="/assets/favicon.png" alt="Bholu Shubhankar Anokha Logo" className="footer-brand-logo-img" width="84" height="84" loading="lazy" decoding="async" />
                     </a>
                     <div className="footer-brand-meta">
                         <span className="footer-brand-name">Bholu Shubhankar Anokha</span>
